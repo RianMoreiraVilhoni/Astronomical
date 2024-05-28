@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DashBoard | Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../public/css/style.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <h1 class="">Asstronomical</h1>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item m-1">
+              <a class="nav-link active btn text-bg-dark " aria-current="page" href="/home"><i
+                  class="bi bi-house-door"></i> Home</a>
+                </li>
+                
+                <li class="nav-item m-1">
+                  <a class="nav-link  btn text-bg-dark" aria-current="page" href="../estrela/lista"><i
+                      class="bi bi-cash-coin"></i> Estrelas</a>
+                </li>
+            
+            <li class="nav-item m-1">
+              <a class="nav-link  btn text-bg-dark" aria-current="page" href="planeta/lista"><i
+                  class="bi bi-cash-coin"></i> Planetas</a>
+            </li>
+            <li class="nav-item m-1">
+              <a class="nav-link  btn text-bg-dark" aria-current="page" href="asteroide/lista"><i
+                  class="bi bi-person"></i>
+                Asteroides</a>
+            </li>
+            
+            <li class="nav-item m-1 ms-5">
+              <a class="nav-link  btn text-bg-danger" aria-current="page" href="/logout"> <i
+                  class="bi bi-x-octagon"></i> Sair</a>
+            </li>
+
+          </ul>
+        </div> 
+      </div>
+    </nav>
+    <div class="row">
+      <h2>Olá <%= userEmail %>,</h2>
+      <p id="dataAtual"></p>
+    </div>
+  </header>
+  <main class="container border border-1 ">
+
+    <div class="row m-4">
+      <div class="col mb-3">
+          <div class="card">
+              <div class="card-header">
+                Valor de vendas:
+              </div>
+              <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                  
+                </blockquote>
+              </div>
+            </div>
+      </div>
+      <div class="col mb-3">
+          <div class="card">
+              <div class="card-header">
+                Valor de vendas com desconto:
+              </div>
+              <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                 
+                </blockquote>
+              </div>
+            </div>
+      </div>
+      
+  </div>
+
+    <div class="row m-3">
+
+      <div class="col">
+        <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
+          <div class="card-header">Gamer Ativos</div>
+          <div class="card-body">
+            <h5 class="card-title">
+              
+            </h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card text-bg-dark
+ mb-3" style="max-width: 18rem;">
+          <div class="card-header">Quantidade de Vendas</div>
+          <div class="card-body">
+            <h5 class="card-title">
+             
+            </h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card text-bg-dark
+ mb-3" style="max-width: 18rem;">
+          <div class="card-header">Quantidade de Skins</div>
+          <div class="card-body">
+            <h5 class="card-title">
+            
+            </h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+
+        <div class="card text-bg-dark
+ mb-3" style="max-width: 18rem;">
+          <div class="card-header">Promoções</div>
+          <div class="card-body">
+            <h5 class="card-title">
+         
+            </h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card text-bg-dark
+ mb-3" style="max-width: 18rem;">
+          <div class="card-header">Descontos</div>
+          <div class="card-body">
+            <h5 class="card-title">
+              
+            </h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+  <script>
+
+    function getDataAtualFormatada() {
+      var diasDaSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+      var mesesDoAno = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+
+      var dataAtual = new Date();
+
+      var diaSemana = diasDaSemana[dataAtual.getDay()];
+      var dia = dataAtual.getDate();
+      var mes = mesesDoAno[dataAtual.getMonth()];
+      var ano = dataAtual.getFullYear();
+
+      var dataFormatada = diaSemana + ', ' + dia + ' de ' + mes + ' de ' + ano;
+
+      return dataFormatada;
+    }
+
+    var paragrafoData = document.getElementById('dataAtual');
+
+    var dataAtualFormatada = getDataAtualFormatada();
+
+    paragrafoData.textContent = dataAtualFormatada;
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroHub | Início</title>
+    <link rel="icon" href="images/fotos/icon.jfif">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+            color: #fdfdfd;
+        }
+
+        .cxBody {
+            line-height: 1.5;
+            font-size: clamp(1.125rem, 2vw, 1.25rem);
+        }
+    </style>
+</head>
+
+<body id="pindex">
+
+    <header>
+        <nav>
+            <div class="conteudos-a">
+                <a href="#asteroidescometas">
+                    <p>Asteroides e Cometas</p>
+                </a>
+                <a href="#astronautas">
+                    <p>Astronautas</p>
+                </a>
+                <a href="#estrelas">
+                    <p>Estrelas</p>
+                </a>
+                <a href="#galaxias">
+                    <p>Galáxias</p>
+                </a>
+                <a href="#planetas">
+                    <p>Planetas</p>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+
+
+
+
+    <main>
+
+        <section class="cx-orbita" style="height: 100vh; border: 2px dashed transparent; margin: 10% 0 0 0;">
+            <div class="txt-animado">
+                <h1>Pronto para explorar a imensidão do universo e descobrir os segredos dos astros?</h1>
+            </div>
+        </section>
+
+        <div id="orbita">
+
+            <div class="container">
+
+                <div class="sun">
+                    <img src="../images/planetas/sun.png" alt="sun">
+                </div>
+                <div class="mercury"></div>
+                <div class="venus"></div>
+                <div class="earth">
+                    <div class="moon"></div>
+                </div>
+                <div class="mars"></div>
+                <div class="jupiter"></div>
+                <div class="saturn"></div>
+                <div class="uranus"></div>
+                <div class="neptune"></div>
+                <div class="pluto"></div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-------------------------------- ASTEOIDES E COMETAS ------------------------------>
+
+        <section id="asteroidescometas" style="height: 100vh; border: 2px solid transparent; margin: -30% 0 0 0;">
+
+            <div class="cont-asteroidescometas cxBody">
+
+                <article>
+
+                    <h2>Cometas e Asteroides:</h2>
+                    <p>Você pode pensar que os nomes são para um só astro, mas há sim diferenças entre eles:</p>
+
+                    <br>
+
+                    <h4>Asteroides:</h4>
+                    <ul>
+                        <li>Composição: São feitos principalmente de rocha e metais. Alguns podem conter pequenas
+                            quantidades de gelo,
+                            mas não em grandes quantidades como os cometas.</li>
+
+                        <li>Órbita: Têm órbitas mais circulares, principalmente entre Marte e Júpiter, na região
+                            conhecida como Cinturão de Asteroides.</li>
+
+                        <li>Sem cauda: Como não são compostos principalmente de gelo, os asteroides não desenvolvem
+                            caudas quando se aproximam do Sol.</li>
+                    </ul>
+
+                    <br>
+
+                    <h4>Cometas:</h4>
+                    <ul>
+                        <li>Composição: São feitos principalmente de gelo, poeira e gases. Por isso, muitas vezes são
+                            descritos como "bolas de neve suja".</li>
+
+                        <li>Órbita: Geralmente têm órbitas muito elípticas, o que significa que passam muito tempo longe
+                            do Sol e, de vez em quando, se aproximam muito.</li>
+
+                        <li>Cauda: Quando um cometa se aproxima do Sol, o calor faz com que o gelo e os gases sublimem
+                            (passem diretamente do estado sólido para o gasoso),
+                            criando uma atmosfera brilhante ao redor do núcleo chamada coma e uma cauda que pode se
+                            estender por milhões de quilômetros.</li>
+                    </ul>
+
+                </article>
+                <% for(let asteroide of asteroides){  %>
+                    <div class="planetas">
+                        
+                        <div class="card">
+                            
+                            <img src="../images/upload/<%= asteroide.foto01 %>" alt="<%= asteroide.foto01 %>" style="max-width: 100px; max-height: 100px;">
+                            <div class="intro">
+        
+                                <h6><%= asteroide.nome %></h6>
+                                <p>Tipo: <%= asteroide.tipo %></p>
+                                <p>Tamanho: <%= asteroide.tamanho %></p>
+                                <p>Orbita: <%= asteroide.orbita %></p>
+                                
+        
+                            </div>
+                        </div>
+                       
+                    </div>
+                    
+                    </div>
+                    <% } %>
+
+            </div>
+
+        </section>
+
+
+        <!-------------------------------- ASTRONAUTAS ------------------------------>
+
+        <section id="astronautas" style="border: 2px solid transparent;">
+
+            <div class="cxBody">
+
+
+                <article>
+
+                    <h2>Astronautas:</h2>
+                    <p>Astronautas são indivíduos treinados para viajar e trabalhar no espaço. Eles são selecionados e
+                        treinados por agências espaciais, como a NASA nos
+                        Estados Unidos, a Roscosmos na Rússia e a ESA na Europa. Os astronautas realizam uma variedade
+                        de tarefas, incluindo operação de espaçonaves,
+                        realização de experimentos científicos, manutenção de equipamentos e até mesmo caminhadas
+                        espaciais fora da nave.</p>
+
+                </article>
+
+            </div>
+
+            <div class="astronautas">
+
+                <div class="card">
+                    <img src="images/astronautas/Neil_Armstrong.jpg" alt="Neil Armstrong">
+                    <div class="intro">
+
+                        <h6>Neil Armstrong</h6>
+                        <p><span>Neil Armstrong</span> foi um astronauta americano, o primeiro homem a pisar na Lua
+                            durante a missão Apollo 11 em 1969.
+                            Ele nasceu em 5 de agosto de 1930 e faleceu em 25 de agosto de 2012. Armstrong é famoso por
+                            sua frase: "Este é um
+                            pequeno passo para o homem, um grande salto para a humanidade."</p>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </section>
+
+        <!-------------------------------- CX. INFO ------------------------------>
+
+        <section style="height: 100vh; background-color: #9b9b9b31; margin: 5% 0 0 0;">
+
+            <div class="cxInfo"></div>
+
+        </section>
+
+        <!-------------------------------- ESTRELAS ------------------------------>
+
+        <section id="estrelas" style="height: 100vh; border: 2px solid #add8e6; margin: 5% 0 0 0;">
+            <div class="estrelas"></div>
+        </section>
+
+        <!-------------------------------- GALÁXIAS ------------------------------>
+
+        <section id="galaxias" style="height: 100vh; border: 2px solid #ffb6c1; margin: 5% 0 0 0;">
+            <div class="galaxias">
+
+                <div class="contem-galaxia">
+
+                    <div class="content-galaxia">
+
+                        <div class="imagem-galaxia">
+                            <img src="images/fotos/vialactea.jfif" alt="">
+                        </div>
+                        <div class="text-box">
+                            <h3>Galáxias:</h3>
+                            <p>Galáxias são vastos sistemas cósmicos compostos por estrelas, poeira, gás interestelar, matéria escura e outros objetos astronômicos, 
+                            todos mantidos juntos pela gravidade. Elas variam em tamanho, desde as galáxias anãs, que contêm algumas dezenas de milhões de estrelas, 
+                            até as galáxias gigantes, com trilhões de estrelas.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-------------------------------- PLANETAS ------------------------------>
+
+        <section id="planetas" style="height: 100vh; border: 2px solid #ffffe0; margin: 5% 0 0 0;">
+            <% for(let planeta of planetas){  %>
+            <div class="planetas">
+                
+                <div class="card">
+                    
+                    <img src="../images/upload/<%= planeta.foto01 %>" alt="<%= planeta.foto01 %>" style="max-width: 100px; max-height: 100px;">
+                    <div class="intro">
+
+                        <h6><%= planeta.nome %></h6>
+                        <p>Massa: <%= planeta.massa %></p>
+                        <p>Raio: <%= planeta.raio %></p>
+                        <p>Periodo Oorbital: <%= planeta.porbita %></p>
+                        <p>Distancia do Sol: <%= planeta.dstsol %></p>
+
+                    </div>
+                </div>
+               
+            </div>
+            
+            </div>
+            <% } %>
+        </section>
+
+        <!-------------------------------- CX. INFO ------------------------------>
+
+        <section style="height: 100vh; background-color:rgba(155, 155, 155, 0.191); margin: 5% 0 0 0;">
+            <div class="cxInfo"></div>
+        </section>
+
+    </main>
+
+    <footer>
+    </footer>
+
+    <script src="orbita.js"></script>
+
+    <script>
+        function typeWriter(elemento) {
+            const textoArray = elemento.innerHTML.split('');
+            elemento.innerHTML = '';
+
+            textoArray.forEach((letra, i) => {
+                setTimeout(() => elemento.innerHTML += letra, 75 * i)
+            });
+        }
+
+        const titulo = document.querySelector('h1');
+        typeWriter(titulo);
+
+        ScrollReveal({
+            reset: true,
+            distance: '60px',
+            duration: 2500,
+            delay: 400
+        })
+
+        ScrollReveal().reveal('.text-box', { delay: 500, origin: 'left' });
+        ScrollReveal().reveal('.content-galaxia .imagem-galaxia', { delay: 600, origin: 'bottom' });
+
+    </script>
+
+</body>
+
+</html>
