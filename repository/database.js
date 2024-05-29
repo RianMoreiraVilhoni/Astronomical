@@ -13,6 +13,129 @@ class Database {
         }).promise();
     }
 
+//////////////////////////////////////////////////// Galaxia ////////////////////////////////////////////////////
+
+async selecionarGalaxia() {
+    const GalaxiaData = await this.#connection.query("SELECT * FROM galaxias;");
+    return GalaxiaData[0];
+}
+
+async insertGalaxia(nome, tipos, tamanho, dstterra, foto01, foto02) {
+    const sql = `
+        INSERT INTO galaxias (nome_galaxia, tipo_galaxia, tamanho_galaxia, distancia_terra_galaxia,
+        foto01_galaxia, foto02_galaxia)
+        VALUES ('${nome}','${tipos}','${tamanho}','${dstterra}',
+        '${foto01}','${foto02}');
+    `
+    const bd = await this.#connection.execute(sql);
+    return bd[0];
+}
+
+async selecionarGalaxiaId(id) {
+    const GalaxiaData = await this.#connection.query("select * from galaxias where id_galaxia =" + id)
+    return GalaxiaData[0]
+}
+
+async deleteGalaxia(id) {
+    const sql =
+        `
+    delete from galaxias
+    where id_galaxias = ${id}`
+
+    const dt = await this.#connection.execute(sql)
+    return dt[0]
+}
+
+async atualizarGalaxia(nome, tipos, tamanho, dstterra, foto01, foto02) {
+    console.log("Atualizando skin...");
+    console.log("Dados recebidos:",  nome, tipos, tamanho, dstterra, foto01, foto02);
+
+    const sqlSelectFoto = `SELECT foto01_galaxia, foto02_galaxia FROM galaxias WHERE id_galaxia = ?`;
+    const [rows] = await this.#connection.execute(sqlSelectFoto, [id]);
+    const fotoAtual1 = rows[0].foto01_galaxia;
+    const fotoAtual2 = rows[0].foto02_galaxia;
+
+    // Verifica se as fotos foram fornecidas na requisição
+    const foto1Final = foto01 ? foto01 : fotoAtual1;
+    const foto2Final = foto02 ? foto02 : fotoAtual2;
+
+    const sqlUpdate = `
+        UPDATE galaxias
+        SET nome_galaxia = ?,
+            tipo_galaxia = ?,
+            tamanho_galaxia = ?,
+            distancia_terra_galaxia = ?,
+            foto01_galaxia = ?,
+            foto02_galaxia = ?
+        WHERE id_galaxia = ?
+    `;
+    const values = [nome, tipos, tamanho, dstterra, foto1Final, foto2Final, id];
+
+    try {
+        const [rows, fields] = await this.#connection.execute(sqlUpdate, values);
+        console.log("Galaxia atualizada com sucesso!");
+        return rows;
+    } catch (error) {
+        console.error('Erro ao atualizar Galaxia:', error);
+        throw error;
+    }
+}
+
+//////////////////////////////////////////////////// Astronauta ///////////////////////////////////////////////////
+
+async selecionarAstronauta() {
+    const [astronautaData] = await this.#connection.query("SELECT * FROM astronautas;");
+    return astronautaData;
+}
+
+async inserirAstronauta(nome, idade, nacionalidade, sexo, foto01, foto02) {
+    const sql = `
+        INSERT INTO astronautas (nome_astronauta, idade_astronauta, nacionalidade_astronauta, sexo_astronauta, foto01_astronauta, foto02_astronauta)
+        VALUES (?, ?, ?, ?, ?, ?)
+    `;
+    const [result] = await this.#connection.execute(sql, [nome, idade, nacionalidade, sexo, foto01, foto02]);
+    return result;
+}
+
+async selecionarAstronautaPorId(id) {
+    const [astronautaData] = await this.#connection.query("SELECT * FROM astronautas WHERE id_astronauta = ?", [id]);
+    return astronautaData[0];
+}
+
+async deletarAstronauta(id) {
+    const sql = "DELETE FROM astronautas WHERE id_astronauta = ?";
+    const [result] = await this.#connection.execute(sql, [id]);
+    return result;
+}
+
+async atualizarAstronauta(id, nome, idade, nacionalidade, sexo, foto01, foto02) {
+    console.log("Atualizando astronauta...");
+    console.log("Dados recebidos:", nome, idade, nacionalidade, sexo, foto01, foto02);
+
+    const sqlSelectFoto = "SELECT foto01_astronauta, foto02_astronauta FROM astronautas WHERE id_astronauta = ?";
+    const [rows] = await this.#connection.execute(sqlSelectFoto, [id]);
+    const fotoAtual1 = rows[0].foto01_astronauta;
+    const fotoAtual2 = rows[0].foto02_astronauta;
+
+    const foto1Final = foto01 ? foto01 : fotoAtual1;
+    const foto2Final = foto02 ? foto02 : fotoAtual2;
+
+    const sqlUpdate = `
+        UPDATE astronautas
+        SET nome_astronauta = ?, idade_astronauta = ?, nacionalidade_astronauta = ?, sexo_astronauta = ?, foto01_astronauta = ?, foto02_astronauta = ?
+        WHERE id_astronauta = ?
+    `;
+    const values = [nome, idade, nacionalidade, sexo, foto1Final, foto2Final, id];
+
+    try {
+        const [result] = await this.#connection.execute(sqlUpdate, values);
+        console.log("Astronauta atualizado com sucesso!");
+        return result;
+    } catch (error) {
+        console.error("Erro ao atualizar astronauta:", error);
+        throw error;
+    }
+}
 
 
     //////////////////////////////////////////////////// Asteroide ////////////////////////////////////////////////////

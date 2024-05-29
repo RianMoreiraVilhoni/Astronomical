@@ -22,7 +22,7 @@ function verificarAutenticacao(req, res, next) {
     if (req.session.user && req.session.user.email) {
         next();
     } else {
-        res.redirect('/');
+        res.redirect('/admin');
     }
 }
 app.use(session({
@@ -41,11 +41,16 @@ app.get("/", async (req, res) => {
 });
 
 
-// Configurando o diretório de arquivos estáticos, se necessário
-
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Configurando o diretório das views e o motor de visualização EJS
+app.set('views', path.join(__dirname, 'mvc', 'views','public'));
+app.set('view engine', 'ejs');
 
+app.get("/admin", async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.sendFile(path.resolve(__dirname, "./mvc/views/ctrldev", "index.html"));
+});
 
 app.get("/inicio", async (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -53,6 +58,48 @@ app.get("/inicio", async (req, res) => {
     const lista_planeta = await planetaDAO.consultarPlaneta();
     res.render('pindex',{ asteroides: lista_asteroides, planetas: lista_planeta });
     
+});
+// Rota para processar o formulário de login
+app.post('/login', async (req, res) => {
+    const email = req.body.txtctrllogin;
+    const senha = req.body.txtctrlpass;
+
+    // Consulta SQL para verificar o login usando método da classe Database
+    try {
+        const result = await db.verificarLogin(email, senha);
+        if (result.length > 0) {
+            // Se o login for bem-sucedido, redirecione para home.html
+            req.session.user = { email: email };
+            res.redirect('/home');
+
+        } else {
+            // Se o login falhar, redirecione para error.html
+
+            res.redirect('/error');
+        }
+    } catch (error) {
+        console.error('Erro ao verificar o login:', error);
+        res.redirect('/error');
+    }
+});
+app.get("/logout", (req, res) => {
+    // Destrua a sessão
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Erro ao destruir a sessão:', err);
+            res.redirect('/error');
+        } else {
+            // Redirecione o usuário para a página de login após o logout
+            res.redirect('/admin');
+        }
+    });
+});
+// Rota para a página home
+app.get("/home", verificarAutenticacao, async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
+    res.sendFile(path.resolve(__dirname, "./mvc/views/ctrldev", "home.html"));
+
 });
 
 app.get("/home",  async (req, res) => {

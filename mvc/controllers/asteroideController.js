@@ -79,7 +79,7 @@ module.exports = (app) => {
             console.log("Status do cadastro:", status);
     
             // Redirecionamento após o cadastro bem-sucedido
-            res.redirect('/asteroide/lista');
+            res.redirect('/home');
         } catch (error) {
             console.error(error);
             res.status(500).send('Erro ao realizar o upload.');
